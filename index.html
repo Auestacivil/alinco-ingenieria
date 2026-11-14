@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alinco Ingeniería — Proyectos BIM, Inventor y ejecución de obras</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1f3340;--bg2:#2e4857;--ink:#0e1c2b;--mut:#5b6b7b;--acc:#4a86bd;--acc2:#356a9a;--org:#f08a24;--line:#e3eaf0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#f5f8fa;line-height:1.6}
+h1,h2,h3{font-family:'Space Grotesk',Inter,sans-serif;line-height:1.15}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px;color:var(--ink)}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:20px;text-decoration:none}
+.logo span{color:var(--acc)}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px}
+nav a{text-decoration:none;opacity:.8;font-weight:500}nav a:hover{opacity:1;color:#356a9a}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;border:2px solid var(--acc);transition:.15s}
+.btn:hover{background:var(--acc2);border-color:var(--acc2);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn.ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn.org{background:var(--org);border-color:var(--org);color:#2a1500}.btn.org:hover{background:#d4741a;border-color:#d4741a;color:#fff}
+.hero{background:linear-gradient(135deg,var(--bg),var(--bg2));color:#fff;padding:80px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.tag{display:inline-block;font-size:13px;color:var(--acc);border:1px solid rgba(74,134,189,.55);padding:4px 12px;border-radius:99px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5vw,52px);margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero h1 b{color:var(--org)}
+.hero p{color:#b9c8d6;font-size:18px;max-width:520px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:72px 0}
+.alt{background:#fff}[hidden]{display:none!important}
+.sec-h{max-width:660px;margin:0 0 38px}
+.sec-h .k{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2)}
+.sec-h.o .k{color:#c2670e}
+.sec-h h2{font-size:clamp(26px,3.6vw,36px);margin:6px 0 10px}
+.sec-h p{color:var(--mut)}
+.proj{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pc img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}.frame>img{display:block;width:100%;height:auto;background:#fff}
+.pc div{padding:20px 22px 24px}
+.pc h3{font-size:19px;margin-bottom:6px}
+.pc p{color:var(--mut);font-size:14.5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.two ul{list-style:none;margin:18px 0 26px}
+.two li{padding-left:24px;position:relative;margin-bottom:8px;font-size:15px}
+.two li:before{content:"✓";position:absolute;left:0;font-weight:700;color:var(--acc2)}
+.o li:before{color:#c2670e}
+.frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(14,28,43,.08)}
+.frame svg{display:block;width:100%;height:auto}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{padding:22px;border-left:3px solid var(--acc);background:#f5f8fa;border-radius:0 12px 12px 0}
+.step:before{counter-increment:s;content:"0" counter(s);font-family:'Space Grotesk';font-weight:700;color:var(--acc2);font-size:22px}
+.step h3{font-size:17px;margin:4px 0 6px}.step p{font-size:14px;color:var(--mut)}
+.fam{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 30px}
+.fam h3{font-size:22px;margin-bottom:4px}.fam p{color:var(--mut);font-size:15px;max-width:620px}
+.contact{background:linear-gradient(135deg,var(--bg),var(--bg2));color:#fff;text-align:center}
+.contact p{color:#b9c8d6;max-width:560px;margin:10px auto 26px}
+.contact .cta{justify-content:center}
+footer{background:#07121e;color:#7f93a6;text-align:center;font-size:13px;padding:26px 0}
+@media(max-width:860px){.hero .wrap,.two{grid-template-columns:1fr}.proj,.steps{grid-template-columns:1fr}nav ul{display:none}}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.pf{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in}
+.pf img{display:block;width:100%;height:auto}
+.pf figcaption{padding:12px 16px 14px;display:flex;flex-direction:column;font-size:14px}
+.pf figcaption span{color:var(--mut);font-size:13px}
+.lb{position:fixed;inset:0;background:rgba(10,18,26,.92);z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb[hidden]{display:none}.lb img{max-width:100%;max-height:100%;border-radius:8px}
+.lb button{position:absolute;top:14px;right:20px;background:none;border:0;color:#fff;font-size:38px;cursor:pointer}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr}}
+
+/* tema oscuro */
+body{background:#0b1218;color:#dbe5ee}
+header{background:rgba(11,18,24,.92);border-bottom:1px solid #1c2a36}
+nav{color:#fff}nav a:hover{color:#7fb3e0}
+.logo img{background:#fff;border-radius:8px;padding:4px 10px;height:40px!important}
+.alt{background:#0f1820}
+h1,h2,h3{color:#fff}
+.sec-h h2{text-transform:uppercase;letter-spacing:.02em}
+.sec-h .k{letter-spacing:.3em;color:#7fb3e0}.sec-h.o .k{color:#f0a05a}
+.sec-h p,.pc p,.pf figcaption span,.step p,.fam p,.two li{color:#9db0c0}
+.two li{color:#cfdbe6}
+.pc,.pf,.step,.fam{background:#121d27;border-color:#1f2f3d}
+.pf figcaption b{color:#fff}
+.pc img{border-bottom-color:#1f2f3d}
+.pf img{aspect-ratio:4/3;object-fit:cover}
+.pgrid .pf:nth-child(3) img{object-position:center 25%}
+.step h3{color:#fff}
+.btn{border-radius:999px;background:linear-gradient(90deg,#3f7fb5,#7a63c9);border:0;color:#fff;padding:14px 28px}
+.btn:hover{filter:brightness(1.15);background:linear-gradient(90deg,#3f7fb5,#7a63c9);color:#fff}
+.btn.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.3)}
+.btn.ghost:hover{background:rgba(255,255,255,.18)}
+.btn.org{background:linear-gradient(90deg,#f08a24,#e0523a);color:#fff}
+.vhero{position:relative;min-height:88vh;display:flex;align-items:center;padding:100px 0;background:#0b1218;overflow:hidden}
+.vhero .bgs{position:absolute;inset:0}.vhero .bgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 1.6s ease,transform 7s ease}.vhero .bgs img.on{opacity:1;transform:scale(1.12)}
+.vhero .ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,18,24,.9),rgba(11,18,24,.4))}
+.vhero .wrap{position:relative;display:block;width:100%}
+.vhero h1{font-size:clamp(38px,6.2vw,74px);text-transform:uppercase;margin-bottom:22px}
+.vhero h1 b{color:#f0a05a}
+.eyebrow{display:block;font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:#7fb3e0;margin-bottom:18px}
+.lines{list-style:none;margin:0 0 30px;color:#cfe0ee;font-size:17px}.lines li:before{content:"▸ ";color:#4a86bd}
+.vwrap{border-radius:18px;overflow:hidden;border:1px solid #1f2f3d;background:#000}.vwrap video{display:block;width:100%;height:auto}
+.hero:not(.vhero) p{color:#b9c8d6}
+.paystrip{padding:34px 0 40px;background:#0b1218}
+.tools{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:22px;color:#97abbc;font-size:14px}
+.tools b{color:#fff;border:1px solid #2a3e4f;border-radius:999px;padding:6px 18px;font-weight:600}
+.paybar{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap;background:#f3f6fa;border-radius:16px;padding:22px 28px}
+.paybar .pl{color:#2b3a47;font-size:18px}.paybar .pl i{color:#3f7fb5;font-style:normal;margin-left:6px}
+.paybar img{height:36px;width:auto;display:block}
+.pn{text-align:center;color:#7d91a2;font-size:13px;margin-top:12px}
+.tools .tl{width:100%;text-align:center;margin-bottom:2px}.tc{display:inline-flex;align-items:center;gap:10px;background:#f3f6fa;color:#1d2b37;border-radius:999px;padding:8px 20px 8px 14px;font-weight:600;font-size:15px}.tools{gap:12px!important}.wasec{padding:64px 0 24px;background:#0b1218;text-align:center}
+.wal{display:inline-flex;align-items:center;gap:18px;text-decoration:none;color:#fff;margin-bottom:34px;padding:14px 28px;border-radius:999px;border:1px solid #1f2f3d;background:#121d27;transition:.15s}
+.wal:hover{border-color:#25D366;background:#15262c}
+.wal span{display:flex;flex-direction:column;text-align:left}.wal b{font-family:'Space Grotesk';font-size:clamp(22px,4vw,32px);letter-spacing:.02em}.wal i{font-style:normal;color:#97abbc;font-size:14px}
+.mapcard{max-width:420px;margin:0 auto}.mapcard .ml{color:#7fb3e0;font-size:15px;margin-bottom:10px}
+.mapcard svg{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #1f2f3d}
+.navwa{display:inline-flex;align-items:center;opacity:1!important}.navwa:hover svg{transform:scale(1.12)}.navwa svg{transition:.15s}.navwa-m{display:none}nav ul{align-items:center}@media(max-width:860px){.navwa-m{display:inline-flex}}.pf .imgs{position:relative;line-height:0}.pf.sw img{transition:opacity 1.4s ease}.pf.sw img.b{position:absolute;inset:0;height:100%}.pf.sw img:not(.on){opacity:0}.pf.sw img.ct{object-fit:contain;background:#0f1820}.pgrid .pf:nth-child(3) img{object-position:center}</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#inicio" aria-label="Alinco Ingeniería"><img src="i01.png" alt="Alinco Ingeniería" style="height:44px;width:auto;display:block"></a>
+<ul><li><a href="#revit">Revit</a></li><li><a href="#portafolio">Portafolio</a></li><li><a href="#inventor">Inventor</a></li><li><a href="#gemelos">Gemelos y AR</a></li><li><a href="#obras">Ejecución de obras</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#contacto">Contacto</a></li><li><a class="navwa" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></li></ul>
+<span class="navwa-m"><a class="navwa" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></span>
+</nav></div></header>
+
+<main class="view" id="v-home">
+<div class="hero vhero" id="inicio">
+<div class="bgs" id="heroSlides" aria-hidden="true"></div>
+<div class="ov"></div>
+<div class="wrap">
+<span class="eyebrow">Alinco Ingeniería</span>
+<h1>Proyectos de <em>ingeniería</em><br>en Revit e <b>Inventor</b></h1>
+<ul class="lines"><li>Modelado BIM, planos técnicos y renders</li><li>Diseño mecánico y planos de fabricación</li><li>Gemelos digitales y proyectos en realidad aumentada</li><li>Ejecución de obras civiles, farmacéuticas y de agua</li></ul>
+<div class="cta"><a class="btn" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Cotizar mi proyecto</a><a class="btn ghost" href="#portafolio">Ver portafolio</a><a class="btn ghost" href="#obras">Ejecución de obras</a></div>
+</div>
+</div>
+
+<section id="revit"><div class="wrap">
+<div class="sec-h"><div class="k">Revit · BIM</div><h2>Proyectos BIM en Revit</h2><p>Modelamos en Revit 2026 con información lista para coordinar, cuantificar y documentar.</p></div>
+<div class="proj">
+<div class="pc"><img loading="lazy" src="i02.jpg" alt="Render de escalera metálica en terraza">
+<div><h3>Arquitectónico y estructural</h3><p>Plantas, cortes, fachadas y cuadros de áreas a partir de tus planos o croquis.</p></div></div>
+
+<div class="pc"><img loading="lazy" src="i03.jpg" alt="Esquema isométrico genérico de redes MEP">
+<div><h3>Redes MEP</h3><p>Hidráulico, sanitario, contra incendio y mecánico, coordinados entre sí y con la estructura.</p></div></div>
+
+<div class="pc"><img loading="lazy" src="i04.jpg" alt="Modelo Revit de planta de tratamiento de aguas residuales">
+<div><h3>Plantas de tratamiento de agua</h3><p>Equipos, tuberías y obras civiles modeladas con familias propias y cantidades de obra.</p></div></div>
+</div>
+<div style="margin-top:30px"><a class="btn" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Solicitar cotización de proyecto Revit</a></div>
+</div></section>
+
+<section class="alt" id="portafolio"><div class="wrap">
+<div class="sec-h"><div class="k">Portafolio</div><h2>Proyectos modelados en Revit</h2><p>Algunos de los proyectos desarrollados: tratamiento de aguas, vivienda, torres y obras industriales. Toca una imagen para ampliarla.</p></div>
+<div class="pgrid">
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on ct" style="background:#fff" loading="lazy" src="i05.jpg" alt="PTAR Humax, vista isométrica con terreno"><img class="b ct" style="background:#fff" loading="lazy" src="i06.jpg" alt="PTAR Humax, equipos y tanques"><img class="b ct" style="background:#fff" loading="lazy" src="i07.jpg" alt="PTAR Humax, planta"></div><figcaption><b>PTAR Humax</b><span>Planta de tratamiento de aguas residuales industriales · industria farmacéutica</span></figcaption></figure>
+<figure class="pf" tabindex="0"><img loading="lazy" src="i08.jpg" alt="Conjunto La Catalina"><figcaption><b>Conjunto La Catalina</b><span>Tren de tratamiento y campo de infiltración modelados en Revit</span></figcaption></figure>
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on ct" loading="lazy" src="i09.jpg" alt="Torre La Ceja, fachada"><img class="b" loading="lazy" src="i10.jpg" alt="Torre La Ceja, sala y cocina"><img class="b" loading="lazy" src="i11.jpg" alt="Torre La Ceja, balcón"><img class="b ct" loading="lazy" src="i12.jpg" alt="Torre La Ceja, planta tipo"><img class="b" loading="lazy" src="i13.jpg" alt="Torre La Ceja, pasillo y escalera"><img class="b ct" loading="lazy" src="i14.jpg" alt="Torre La Ceja, baño"><img class="b" loading="lazy" src="i15.jpg" alt="Torre La Ceja, escalera y ascensor"></div><figcaption><b>Torre La Ceja</b><span>Torre residencial y comercial · fachada, interiores y planta tipo</span></figcaption></figure>
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on" loading="lazy" src="i02.jpg" alt="Escalera metálica de terraza, vista isométrica"><img class="b" loading="lazy" src="i16.jpg" alt="Escalera metálica de terraza, vista de día"><img class="b" loading="lazy" src="i17.jpg" alt="Escalera metálica de terraza, vista de noche"></div><figcaption><b>Escalera metálica de terraza</b><span>Modelado y renders · planta industrial</span></figcaption></figure>
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on ct" style="background:#fff" loading="lazy" src="i18.jpg" alt="Pérgola y deck de jardín, modelo en Revit con cotas"><img class="b" loading="lazy" src="i19.jpg" alt="Pérgola y deck de jardín, vista de día"><img class="b" loading="lazy" src="i20.jpg" alt="Pérgola y deck de jardín, vista de noche"></div><figcaption><b>Pérgola y deck de jardín</b><span>Diseño y modelado BIM en Revit · 4 × 6 m</span></figcaption></figure>
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on" loading="lazy" src="i21.jpg" alt="Casa La Playa, fachada principal"><img class="b" loading="lazy" src="i22.jpg" alt="Casa La Playa, atardecer"><img class="b ct" loading="lazy" src="i23.jpg" alt="Casa La Playa, planta general"></div><figcaption><b>Casa La Playa</b><span>Vivienda contemporánea · lote 7×14 m · Ibagué</span></figcaption></figure>
+<figure class="pf sw" tabindex="0"><div class="imgs"><img class="on" loading="lazy" src="i24.jpg" alt="Torre Ámbar, fachada de día"><img class="b" loading="lazy" src="i25.jpg" alt="Torre Ámbar, fachada al atardecer"><img class="b ct" loading="lazy" src="i26.jpg" alt="Torre Ámbar, planta tipo"></div><figcaption><b>Torre Ámbar</b><span>Vivienda multifamiliar · lote 7×12 m · Ibagué</span></figcaption></figure>
+</div>
+</div></section>
+<div id="lb" class="lb" hidden><button aria-label="Cerrar" id="lbx">×</button><img id="lbi" alt=""></div>
+<section id="inventor"><div class="wrap two o">
+<div class="frame">
+<svg viewBox="0 0 520 380" role="img" aria-label="Ilustración genérica de ensamble mecánico">
+<rect width="520" height="380" fill="#1a1d24"/>
+<g stroke="#2b303b"><path d="M0 300l260-120 260 120M0 340l260-120 260 120"/></g>
+<path d="M120 230l140-70 140 70-140 70z" fill="#3a404d" stroke="#8b94a6" stroke-width="2"/>
+<path d="M120 230v26l140 70v-26z" fill="#2a2f3a" stroke="#8b94a6" stroke-width="2"/>
+<path d="M260 300v26l140-70v-26z" fill="#222630" stroke="#8b94a6" stroke-width="2"/>
+<g stroke="#8b94a6" stroke-width="2"><path d="M150 230v-60M370 230v-60M260 270v-60M260 160v-60"/></g>
+<path d="M170 150l90-45 90 45-90 45z" fill="#f08a24" stroke="#ffd2a1" stroke-width="2"/>
+<path d="M170 150v22l90 45v-22z" fill="#c26b14"/><path d="M260 195v22l90-45v-22z" fill="#9c540e"/>
+<circle cx="260" cy="140" r="24" fill="#cfd6e4" stroke="#fff" stroke-width="2"/><circle cx="260" cy="140" r="9" fill="#1a1d24"/>
+<g stroke="#f08a24" stroke-width="2"><path d="M80 120h60M80 114v12M140 114v12"/></g>
+<text x="110" y="108" font-family="Inter" font-size="12" fill="#f08a24" text-anchor="middle">1 200</text>
+</svg>
+</div>
+<div>
+<div class="sec-h o" style="margin-bottom:0"><div class="k">Inventor · Mecánico</div><h2>Generamos tu proyecto en Inventor</h2><p>Diseño mecánico paramétrico, de la idea al plano de fabricación.</p></div>
+<ul>
+<li>Modelado 3D de equipos, estructuras metálicas y soportes</li>
+<li>Ensambles con despiece (lista de materiales)</li>
+<li>Planos de taller y de fabricación</li>
+<li>Ajustes de diseño según tu proceso y tus normas</li>
+</ul>
+<a class="btn org" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Cotizar proyecto en Inventor</a>
+</div>
+</div></section>
+
+<section id="gemelos" class="alt"><div class="wrap">
+<div class="sec-h"><div class="k">Innovación</div><h2>Gemelos digitales y realidad aumentada</h2><p>Llevamos tu modelo BIM más allá del plano: una réplica digital que se consulta y una experiencia para ver el proyecto sobre el terreno.</p></div>
+<div class="proj" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+<div class="pc"><img loading="lazy" src="i27.jpg" alt="Gemelo digital de la PTAR con sensores y tablero de indicadores"><div><h3>Gemelos digitales</h3><p>Réplica digital de plantas, edificios y equipos a partir del modelo BIM, con información técnica de cada elemento, para operar, hacer seguimiento y mantener tu activo.</p></div></div>
+<div class="pc"><img loading="lazy" src="i28.jpg" alt="Realidad aumentada sobre la planta de tratamiento en tablet"><div><h3>Proyectos en realidad aumentada</h3><p>Visualiza el diseño a escala real sobre el sitio, desde el celular o la tablet, para revisar, presentar y decidir antes de construir.</p></div></div>
+</div>
+<div style="margin-top:26px"><a class="btn org" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Cotizar gemelo digital o realidad aumentada</a></div>
+</div></section>
+
+<section id="proceso"><div class="wrap">
+<div class="sec-h"><div class="k">Proceso</div><h2>Cómo trabajamos</h2></div>
+<div class="steps">
+<div class="step"><h3>Envías tu solicitud</h3><p>Planos, croquis, fotos o fichas técnicas y el alcance.</p></div>
+<div class="step"><h3>Revisamos</h3><p>Analizamos la información y definimos entregables.</p></div>
+<div class="step"><h3>Cotización</h3><p>Precio y plazo claros antes de empezar.</p></div>
+<div class="step"><h3>Entrega</h3><p>Modelos, planos y ajustes incluidos.</p></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="fam">
+<div><h3>¿Solo necesitas familias Revit?</h3><p>También ofrecemos familias a pedido (desde 25 USD) y un pack de 11 equipos para planta de agua en Revit 2026.</p></div>
+<div class="cta"><a class="btn" href="https://payhip.com/b/IZg9q" target="_blank" rel="noopener">Pedir familia</a><a class="btn" style="background:#fff;color:var(--ink);border-color:var(--line)" href="https://payhip.com/b/2Ss0f" target="_blank" rel="noopener">Ver el pack</a></div>
+</div>
+</div></section>
+
+<section class="contact" id="contacto"><div class="wrap">
+<h2>Cuéntanos tu proyecto</h2>
+<p>Envía tu solicitud y te respondemos con una cotización sin costo. El pedido se gestiona en Payhip.</p>
+<div class="cta"><a class="btn" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Solicitar cotización</a><a class="btn ghost" href="https://payhip.com/AtuestaBIM" target="_blank" rel="noopener">Ver tienda</a></div>
+</div></section>
+
+</main>
+<main class="view" id="v-obras" hidden>
+<div class="hero" style="padding:64px 0 70px"><div class="wrap" style="grid-template-columns:1fr">
+<div>
+<span class="tag">Ejecución de obras</span>
+<h1>También <em>ejecutamos</em> tus proyectos</h1>
+<p style="max-width:660px">Además del diseño y modelado, construimos: obras civiles, proyectos farmacéuticos y hospitalarios, y plantas de tratamiento de agua potable y residual.</p>
+<div class="cta"><a class="btn" href="#contacto-obras">Cotizar una obra</a><a class="btn ghost" href="#inicio">Volver al inicio</a></div>
+</div></div></div>
+
+<section><div class="wrap">
+<div class="sec-h"><div class="k">Qué ejecutamos</div><h2>Cuatro frentes de obra</h2><p>Planeación, construcción y control en un solo equipo.</p></div>
+<div class="proj" style="grid-template-columns:repeat(2,1fr)">
+
+<div class="pc"><img loading="lazy" src="i24.jpg" alt="Render de torre de vivienda multifamiliar">
+<div><h3>Obras civiles</h3><p>Cimentaciones, estructuras, cubiertas, urbanismo, redes y adecuaciones de instalaciones existentes.</p></div></div>
+
+<div class="pc"><img loading="lazy" src="i29.jpg" alt="Planta Revit de PTAR industrial">
+<div><h3>Farmacéutico y hospitalario</h3><p>Adecuaciones y remodelaciones de laboratorios, áreas limpias, salas y espacios de salud, con control de calidad y orden en obra.</p></div></div>
+
+<div class="pc"><img loading="lazy" src="i04.jpg" alt="Planta de tratamiento de agua potable en Revit">
+<div><h3>Plantas de agua potable (PTAP)</h3><p>Captación, coagulación, sedimentación, filtración y desinfección, con obra civil, equipos y puesta en marcha.</p></div></div>
+
+<div class="pc"><img loading="lazy" src="i05.jpg" alt="Tren de tratamiento y campo de infiltración en Revit">
+<div><h3>Plantas de aguas residuales (PTAR)</h3><p>Sistemas de tratamiento, tanques, redes y estructuras de infiltración, desde la excavación hasta la entrega.</p></div></div>
+
+</div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="sec-h"><div class="k">Cómo ejecutamos</div><h2>Obra planeada y controlada</h2></div>
+<div class="steps">
+<div class="step"><h3>Planeación</h3><p>Cronograma, presupuesto y recursos definidos antes de iniciar.</p></div>
+<div class="step"><h3>Ejecución</h3><p>Coordinación de cuadrillas y contratistas en sitio.</p></div>
+<div class="step"><h3>Control</h3><p>Calidad, avance y seguridad y salud en el trabajo.</p></div>
+<div class="step"><h3>Entrega</h3><p>Pruebas, planos record y documentación final.</p></div>
+</div>
+</div></section>
+
+<section class="contact" id="contacto-obras"><div class="wrap">
+<h2>¿Tienes una obra por ejecutar?</h2>
+<p>Cuéntanos el alcance y te respondemos con una propuesta. Para diseño y modelado BIM del mismo proyecto, también podemos encargarnos.</p>
+<div class="cta"><a class="btn" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Solicitar propuesta</a><a class="btn ghost" href="#inicio">Ver servicios de diseño</a></div>
+</div></section>
+</main>
+<section class="wasec" id="contactanos"><div class="wrap">
+<div class="sec-h" style="margin:0 auto 26px;text-align:center"><div class="k">Contacto</div><h2>Escríbenos</h2></div>
+<a class="wal" href="https://wa.me/573204786329?text=Hola%20Alinco%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" width="64" height="64" aria-hidden="true"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+<span><b>WhatsApp</b><i>Escríbenos y cotiza tu proyecto</i></span></a>
+<div class="mapcard"><div class="ml">Oficina</div>
+<svg viewBox="0 0 400 440" role="img" aria-label="Mapa de Colombia con la ubicación de La Estrella, Antioquia">
+<defs><radialGradient id="mg" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#27465a"/><stop offset="1" stop-color="#0c1620"/></radialGradient>
+<linearGradient id="cf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd0b8"/><stop offset="1" stop-color="#2a7fa8"/></linearGradient>
+<filter id="gl" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect width="400" height="440" fill="url(#mg)"/>
+<path d="M238.937,33.934L238.079,34.23L236.963,34.907L233.786,36.091L229.407,37.233L223.654,38.713L222.366,40.277L216.786,50.16L212.063,52.143L210.346,53.62L209.058,55.476L206.225,58.934L205.023,61.547L201.932,67.275L200.215,74.43L199.614,78.468L198.669,84.268L197.295,87.208L195.492,89.98L193.518,92.666L191.8,95.604L190.341,97.869L190.083,98.666L190.77,99.295L194.204,98.666L195.578,97.995L197.467,97.114L198.583,97.576L199.785,100.092L201.073,100.428L202.361,100.092L203.649,100.721L205.366,107.009L206.826,112.371L210.174,115.678L212.75,118.273L213.351,120.575L214.038,123.796L214.124,125.385L213.351,126.347L212.063,128.312L211.72,132.074L211.462,133.286L211.291,136.795L211.462,138.925L212.149,140.596L213.265,141.556L215.584,142.057L217.73,142.641L218.932,145.522L220.649,149.194L222.538,150.738L225.286,151.78L227.175,151.405L231.725,150.738L235.589,150.904L241.341,151.906L243.488,151.864L246.235,151.655L251.044,149.653L252.761,149.361L254.736,149.528L257.569,150.571L259.2,151.363L261.175,152.198L264.008,152.782L265.897,152.698L267.271,152.656L268.13,153.032L272.68,158.744L276.63,163.663L280.064,167.829L283.756,172.285L284.014,172.577L285.731,171.994L286.847,172.244L287.877,173.16L289.595,172.785L292.084,171.119L295.691,170.786L300.499,171.786L306.852,171.786L314.666,170.786L319.56,169.745L321.448,168.579L324.625,168.704L328.403,169.745L330.464,171.203L330.721,172.66L331.494,174.908L330.635,177.198L328.231,179.529L326.858,182.525L326.6,186.103L325.398,188.765L323.166,190.512L322.221,193.007L322.736,196.333L322.479,201.154L321.534,207.511L321.534,211.291L322.479,212.537L322.994,214.322L322.908,216.648L323.252,218.682L324.454,221.339L326.171,226.651L327.544,228.933L328.747,229.805L330.034,230.8L333.641,236.235L334.499,237.396L334.242,238.392L333.898,239.138L333.469,239.594L329.691,242.829L322.049,249.877L321.363,250.789L321.448,252.24L323.681,251.287L325.999,252.075L327.201,252.24L327.716,252.821L328.403,254.727L329.176,255.018L330.292,255.846L332.61,257.836L334.499,259.949L335.873,260.944L336.903,261.897L337.247,263.265L336.817,264.632L338.019,267.781L338.792,268.775L339.221,269.977L338.792,271.178L339.822,272.628L340.853,275.404L342.226,278.842L342.398,280.706L342.913,281.576L343.6,284.102L344.716,286.504L344.459,288.119L344.888,289.734L340.338,290.811L339.994,290.645L339.737,290.024L339.822,285.51L339.822,280.374L339.05,278.262L336.989,274.907L334.327,270.433L333.555,269.148L332.353,268.402L330.979,268.32L330.034,268.61L328.661,269.438L327.373,270.35L324.969,273.043L322.479,276.191L321.019,276.895L319.645,277.185L318.358,277.102L317.327,276.232L316.211,274.534L315.009,272.255L313.464,271.51L312.862,272.214L312.347,273.54L312.004,274.865L313.034,276.564L313.893,277.889L312.347,277.848L307.539,277.848L301.872,277.848L296.292,277.848L291.312,277.848L286.589,277.848L284.786,277.723L282.983,276.978L281.266,276.605L280.408,276.646L278.69,277.392L276.63,277.516L275.17,278.22L273.968,278.138L273.968,282.073L273.968,287.664L273.882,293.627L275.17,293.171L276.286,293.213L277.145,293.627L279.463,293.296L280.665,293.461L281.867,293.627L282.983,293.668L283.67,294.124L284.615,294.041L285.645,293.503L286.761,293.834L288.049,294.662L288.908,295.946L289.595,297.478L290.367,298.306L290.281,299.755L290.281,300.915L290.024,301.909L290.367,302.53L290.539,303.192L290.539,303.565L290.11,303.73L289.165,303.855L288.135,303.979L287.448,303.938L286.933,303.358L286.418,303.275L285.645,303.358L284.872,302.985L284.185,302.24L282.983,301.495L281.695,301.826L280.751,302.198L279.807,302.654L279.034,303.151L278.175,303.027L277.059,303.399L276.2,303.979L274.998,304.393L273.711,304.641L272.165,304.848L270.705,304.931L269.074,305.097L268.988,308.244L268.817,314.371L268.731,318.47L268.731,322.197L269.332,323.563L272.251,326.461L274.483,327.993L276.372,329.691L278.347,330.395L279.12,331.057L279.635,332.092L279.892,333.21L280.15,334.162L279.892,335.156L279.463,336.108L279.635,337.102L280.322,337.889L280.493,338.883L281.009,339.835L281.266,340.788L281.867,341.45L282.554,341.947L283.499,342.734L283.67,343.438L283.499,344.307L283.499,344.928L284.443,346.378L284.701,347.413L284.271,348.614L283.842,352.797L282.812,357.601L282.125,361.246L281.094,367.17L279.807,374.09L278.261,382.544L276.801,390.876L275.256,398.962L273.968,406.263L272.508,414.313L271.65,419.17L271.221,420L269.933,418.256L268.13,416.596L266.412,415.558L265.64,414.272L264.695,411.574L263.236,410.661L262.291,409.956L261.347,410.039L260.316,410.786L258.771,411.242L257.741,411.201L253.533,409.333L252.847,409.167L255.594,404.935L260.402,397.386L263.493,392.576L266.842,387.228L268.645,384.533L268.817,384.036L268.817,383.373L268.13,382.337L266.412,381.881L264.524,381.093L263.321,379.808L261.69,379.228L260.402,378.316L258.084,377.405L256.624,376.576L254.907,376.286L253.533,374.753L248.554,371.811L247.266,371.562L245.892,371.976L243.831,372.474L241.857,374.09L239.367,374.587L237.048,374.587L235.846,373.634L234.73,373.261L233.185,371.976L230.523,370.941L228.548,370.236L227.346,370.568L225.887,372.059L224.255,373.51L223.053,374.421L221.422,374.338L219.447,375.706L217.472,376.162L215.498,376.369L213.265,376.825L210.775,376.037L208.715,375.333L207.77,375.001L206.912,375.208L205.624,375.954L203.306,376.286L201.503,376.369L200.215,375.996L199.098,374.711L197.21,374.048L195.149,373.261L194.72,371.562L194.977,370.319L195.836,368.538L195.407,366.673L194.548,363.773L194.119,362.572L193.518,361.536L192.487,361.164L190.513,361.454L188.366,360.335L186.992,359.3L186.305,357.974L187.078,355.572L186.391,353.46L185.103,352.341L184.245,350.312L182.957,348.697L181.326,347.869L179.608,347.951L178.235,347.455L176.689,345.757L175.315,345.094L173.684,343.438L170.679,342.692L169.133,342.03L168.189,341.036L166.987,339.173L167.159,338.179L166.558,337.185L166.043,335.405L165.012,332.755L163.896,331.264L162.694,330.105L161.75,329.152L160.29,327.745L158.487,326.875L156.941,326.006L156.34,324.722L155.825,323.687L155.052,323.729L153.765,323.646L152.477,323.397L151.017,322.611L149.815,321.7L147.84,320.085L146.724,319.878L145.78,319.878L144.32,321.451L140.027,319.795L136.421,317.394L132.643,316.773L130.153,315.282L127.921,313.005L126.633,311.432L125.688,310.645L120.794,308.409L119.85,308.202L118.047,309.237L117.446,309.858L117.274,311.639L117.103,312.674L115.471,313.295L112.895,313.171L111.092,312.508L109.89,312.425L109.633,312.922L108.946,313.129L107.486,313.005L105.34,312.508L103.365,311.846L100.703,310.438L99.501,310.604L96.496,310.314L94.006,309.486L93.319,308.782L92.289,303.73L91.946,303.358L90.915,303.151L89.112,302.447L87.996,301.66L87.395,300.252L86.708,298.927L83.617,299.217L78.723,297.478L75.289,295.78L72.112,293.958L67.39,290.314L65.587,289.403L63.354,288.285L61.981,286.504L59.834,284.682L59.061,284.185L58.375,282.528L55.112,280.167L56.743,277.102L60.693,274.782L65.844,276.605L66.445,273.001L64.556,269.853L64.9,263.886L65.501,262.684L66.875,261.068L68.592,259.991L69.622,259.659L71.425,260.198L72.541,258.996L76.748,259.535L78.036,259.038L78.895,258.209L79.925,257.629L81.213,256.178L81.986,254.52L82.587,253.857L84.047,254.106L84.132,253.36L84.905,252.406L87.481,250.209L87.395,249.256L86.708,247.141L86.88,246.353L88.34,246.105L90.143,245.483L91.001,243.492L92.203,241.751L93.491,239.138L94.951,238.972L95.723,235.986L97.612,233.331L101.562,225.489L100.446,225.655L99.501,226.734L98.385,226.61L97.183,225.987L97.527,222.459L96.84,222.044L94.865,224.742L93.234,221.961L93.062,220.301L93.749,218.64L93.663,217.519L91.001,218.35L91.173,217.312L92.804,216.232L93.577,215.111L95.037,213.907L95.638,212.08L95.981,209.214L96.582,206.14L96.153,204.645L95.38,203.356L94.693,197.663L94.865,194.337L94.521,191.759L93.835,189.514L90.658,186.644L95.723,183.316L97.527,180.819L95.208,175.658L92.203,171.286L92.117,168.704L92.976,169.037L93.92,168.954L94.865,163.454L94.607,161.746L92.976,158.953L90.915,158.911L89.112,155.451L87.996,154.658L87.223,152.49L84.304,148.234L81.986,146.023L83.703,140.888L85.163,139.886L85.678,138.633L85.077,135.458L85.249,134.748L85.592,134.414L85.935,134.456L86.622,134.915L87.739,136.294L88.683,137.965L89.456,138.466L90.572,137.923L95.037,134.581L94.779,133.536L95.208,131.405L96.668,129.692L98.299,129.106L98.729,128.145L98.385,126.681L96.668,122.959L95.208,120.993L94.264,119.027L93.749,117.185L92.032,115.469L92.718,113.836L94.092,111.952L94.521,111.617L95.208,112.119L97.183,115.594L100.36,117.813L103.623,121.453L104.996,123.921L106.027,124.381L106.971,125.301L106.542,125.971L105.511,126.681L105.254,128.145L105.941,128.939L106.628,129.441L108.517,129.106L109.547,127.434L108.86,119.989L107.744,116.264L106.456,115.134L105.34,113.669L106.112,112.538L108.173,112.036L110.835,110.737L120.709,103.614L124.057,96.946L126.633,94.513L129.552,92.96L133.072,93.338L135.906,92.499L136.764,90.358L135.992,87.46L134.875,85.738L135.906,83.175L137.022,79.351L136.936,76.155L138.31,74.22L137.795,73.463L135.82,75.019L134.274,75.692L135.133,74.43L137.966,71.232L139.34,66.391L140.456,64.369L144.406,61.547L145.264,60.198L148.184,58.09L152.992,53.536L154.881,52.27L164.154,55.181L167.073,55.012L166.558,55.56L165.184,55.729L163.209,56.53L162.694,58.259L163.982,60.114L165.441,60.62L166.644,59.439L167.846,56.066L169.734,52.354L170.25,48.472L171.538,47.12L173.598,46.656L177.118,47.416L179.866,48.218L182.699,48.345L191.371,47.754L205.452,37.613L212.063,35.414L216.099,33.299L218.76,29.109L219.447,25.975L221.336,24.789L223.397,24.789L224.341,24.026L224.599,23.052L229.493,20.339L232.326,20L234.73,20.042L240.311,22.416L242.801,26.568L243.23,29.448L239.796,32.58Z" fill="url(#cf)" fill-opacity=".85" stroke="#9ff3e3" stroke-width="1.2" filter="url(#gl)"/>
+<path d="M135.8 171.7L215 112H236" stroke="#fff" stroke-width="1.5" fill="none"/>
+<circle cx="135.8" cy="171.7" r="5" fill="#fff"/><circle cx="135.8" cy="171.7" r="5" fill="none" stroke="#fff" stroke-width="2"><animate attributeName="r" values="5;18" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2s" repeatCount="indefinite"/></circle>
+<rect x="150" y="95" width="168" height="34" rx="6" fill="#0b1218" stroke="#cfe3f2" stroke-width="1.2"/>
+<text x="234" y="117" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="14" fill="#fff">La Estrella, Antioquia</text>
+</svg></div>
+</div></section>
+<section class="paystrip"><div class="wrap">
+<div class="tools"><span class="tl">Trabajamos con</span><span class="tc"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#186BFF" d="M24 22.665H2.994c-.519 0-.838-.293-.835-.723.001.042.002-.148.003-.463.142-.083.283-.165.427-.247l.078-.045.07-.058.015-.013.127-.078 1.294-.804h1.134c3.35 0 11.817 0 16.548.007.159 0 .631 0 1.002-.371.371-.372.37-.853.37-1.011-.008-2.057-.001-4.109.005-6.16.008-2.39.016-4.86 0-7.298v-.063l.61-.007c.169-.003.143.197.143.296.014 5.68-.02 11.36.015 17.038zM14.326 8.982c.006-.281.006-.56.006-.859-.009-.5-.395-1.055-.916-1.055-.435 0-.919.006-1.432.006v3.01h1.432c.52 0 .9-.584.91-1.102zM3.887 19.234 3.853 1.363l.007-.025.026-.003h17.313c.51.232.943.56 1.033 1.16.023 1.052 0 1.896 0 2.854.001.023-.002.036 0 .059.03 4.489-.022 8.963-.005 13.453 0 .285-.072.38-.37.38-5.99-.008-17.97-.007-17.97-.007zm5.624-3.971h2.395l.057-.051v-3.5c.316.001.57-.005.787-.005.075 0 .348.075.449.286.36.757.692 1.531 1.125 2.25.583.967 1.704 1.204 2.469 1.204.528 0 .528-.024.528-.245 0-.423-.006-.935-.006-1.374-.403-.039-.734-.163-.929-.541-.362-.705-.74-1.401-1.119-2.114.248-.072.218-.057.302-.092.859-.357 1.139-.951 1.213-1.71.05-.503.059-1.144.025-1.395-.112-.833-.378-1.454-1.036-1.932-.773-.562-1.678-.657-2.582-.687a62.395 62.395 0 0 0-3.678.012v9.894zm-5.658-13.9C1.631 2.64.98 3.087.223 3.513.025 3.622 0 3.895 0 4.1l.02 17.45c.575-.357 3.293-1.96 3.867-2.316L3.853 1.363z"/></svg>Revit</span><span class="tc"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" fill="#F0A05A"/><text x="12" y="17" text-anchor="middle" font-family="Arial" font-weight="700" font-size="14" fill="#fff">I</text></svg>Inventor</span><span class="tc"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#E51050" d="M3.8672 1.0527v.0157L0 3.3848v17.914l3.8965-2.332h18.3398V2.3301c0-.702-.5773-1.2774-1.2793-1.2774H3.8672zm7.5058 4.0098h3.3008l2.9844 9.9512h-2.5879l-.5683-2.1895h-2.9844l-.5703 2.1621h-2.416l2.8417-9.9238zm11.8633.0273v14.877H4.172l-2.0684 1.2383v.4648c0 .702.5793 1.2774 1.2813 1.2774H24V5.0898h-.7637zM12.9668 6.6816l-.9941 4.3243h2.0468l-1.0527-4.3243z"/></svg>AutoCAD</span><span class="tc"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#005F9E" d="M.968 9.027l7.717 4.428-.006 1.32-4.39-2.518-2.763 1.57 7.148 4.12.005 1.27-7.658-4.405c.02.516.488 2.106 1.383 3.337.91 1.247 1.946 1.776 1.946 1.776L11.428 24V11.849L.975 5.846zm22.064-3.8L15.22.723S13.982 0 12.008 0C9.952 0 8.76.746 8.76.746l-7.236 4.14 11.009 6.328V24l7.245-4.136s1.295-.715 2.279-2.414c.867-1.496.975-2.943.975-2.943zM11.251 7.308s1.615-.298 2.98.49l2.171 1.25s.003 1.097.003 2.736c0 1.313-1.112 2.674-1.112 2.674l.002-4.816zm6.402 10.562l-2.358 1.353v-1.269l1.835-1.05c1.748-1.26 2.037-3.117 2.037-3.761l-.007-5.705-5.006-2.881s-.76-.499-2.129-.499c-1.367 0-2.113.461-2.113.461L8.154 5.53l-1.11-.641L9.473 3.5s.95-.527 2.544-.527c1.462 0 2.6.571 2.6.571L20.27 6.81l-.007 6.226c.04.957-.406 3.296-2.61 4.835z"/></svg>SketchUp</span><span class="tc"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#801010" d="M6.823 3.103c-.1 0-.213.006-.34.017-.511.044-1.25.18-1.802.329a6.269 6.269 0 0 0-1.15.42c-.231.112-.33.178-.354.273-.023.094.028.217.16.436s.346.533.535.961c.19.428.356.97.361 1.651.006.68-.149 1.5-.245 1.962-.096.462-.133.568-.227.618-.094.05-.245.044-.525-.021-.281-.065-.69-.187-1.1-.259-.41-.072-.819-.093-1.122-.038-.304.056-.504.189-.645.369-.14.18-.224.406-.282.75A6.957 6.957 0 0 0 0 11.687c.005.317.047.49.136.584.088.094.223.109.492.054s.672-.18 1.224-.215a6.302 6.302 0 0 1 1.94.202c.685.182 1.353.49 1.95.93.598.438 1.127 1.007 1.566 1.593.438.586.787 1.189 1.004 1.541.217.353.304.455.372.42.068-.035.117-.207.145-.417a3.141 3.141 0 0 0-.02-.848 7.467 7.467 0 0 0-.32-1.365 5.617 5.617 0 0 0-.495-1.018c-.146-.247-.241-.408-.245-.51-.004-.103.085-.148.51-.315.424-.167 1.185-.457 1.958-.808.772-.351 1.556-.764 2.042-1.106.486-.341.674-.61.724-.937.05-.326-.039-.71-.16-1.076a6.93 6.93 0 0 0-.529-1.193A13.696 13.696 0 0 0 11.28 5.6a9.187 9.187 0 0 0-1.1-1.236c-.282-.255-.421-.31-.51-.29-.09.02-.131.115-.168.47-.037.356-.07.973-.144 1.559a7.468 7.468 0 0 1-.432 1.773 12.543 12.543 0 0 1-.99 1.982c-.388.64-.803 1.212-1.054 1.462-.25.25-.336.18-.477.064l-.486-.4c-.15-.125-.253-.213-.273-.293-.02-.08.045-.15.27-.448.227-.299.615-.825.96-1.478a7.75 7.75 0 0 0 .796-2.282 10.1 10.1 0 0 0 .095-2.338c-.044-.564-.124-.77-.306-.896-.137-.095-.332-.146-.638-.146zm6.48 7.034h-.012c-.084.01-.192.112-.415.294a6.86 6.86 0 0 1-1.017.7c-.458.257-1.038.507-1.51.734-.47.226-.831.429-1.004.712-.172.283-.155.648.04.85.194.204.566.246.883.259.318.013.58-.002.826.087.246.09.475.285.764.516.288.23.637.498.925.561.289.063.518-.079.766-.202.249-.124.516-.23.888-.225.371.005.847.12 1.318.37.47.248.938.63 1.184.866.247.236.272.327.245.362-.028.036-.108.018-.304-.14-.196-.157-.508-.454-.917-.688-.41-.234-.916-.404-1.4-.391-.482.013-.94.21-1.23.55-.29.34-.412.822-.546 1.164-.133.341-.28.543-.47.617-.19.074-.424.02-.703-.099-.28-.12-.604-.307-.874-.442-.269-.136-.484-.22-.62-.353-.136-.132-.195-.31-.203-.571-.01-.26.032-.6.05-.853.02-.25.018-.413-.038-.56a1.079 1.079 0 0 0-.232-.35c-.07-.07-.099-.075-.113-.058-.014.017-.012.058.01.158.023.1.067.26.05.581-.019.321-.098.803-.16 1.17-.062.366-.107.618-.02.808.087.191.306.322.707.54.4.22.982.527 1.518.855.537.327 1.027.673 1.562 1.089.534.415 1.112.9 1.5 1.238.39.339.588.532.742.59.154.059.264-.018.307-.138.044-.12.023-.285-.014-.429a1.174 1.174 0 0 0-.24-.46 4.92 4.92 0 0 0-.68-.704c-.287-.243-.614-.463-.803-.614-.19-.151-.242-.233-.212-.259.03-.026.14.004.302.108.162.103.375.28.612.459.237.178.499.356.733.584.235.228.443.506.583.706.14.201.214.324.294.372.08.049.165.022.277-.05a3.03 3.03 0 0 0 .426-.355c.178-.169.398-.393.551-.633.154-.24.242-.496.299-.772.056-.276.08-.572.247-.862.167-.29.476-.574.994-1.025.518-.451 1.244-1.07 1.891-1.664.648-.595 1.216-1.165 1.696-1.802.479-.638.87-1.342 1.067-1.743.199-.4.205-.498.14-.526-.063-.027-.198.015-.61.313-.414.297-1.106.849-1.886 1.43-.781.58-1.65 1.19-2.336 1.569-.686.378-1.19.524-1.55.562-.361.037-.58-.034-.724-.11-.143-.077-.21-.158-.224-.241-.013-.084.03-.17.135-.275.106-.106.277-.232.447-.392.17-.16.338-.354.468-.556.13-.202.22-.411.261-.592.042-.181.034-.333-.04-.376-.074-.043-.215.023-.376.11-.162.086-.343.192-.593.3a2.683 2.683 0 0 1-.92.235 1.626 1.626 0 0 1-1.088-.313c-.343-.26-.635-.71-.866-1.147-.23-.438-.398-.865-.512-1.12-.108-.242-.168-.33-.246-.33zm-2.215 4.075a.422.422 0 0 0-.294.115c-.094.086-.145.2-.034.338.112.137.385.297.636.469.252.172.481.357.666.42.184.064.323.006.402-.096.08-.102.1-.247-.003-.404-.103-.157-.327-.325-.564-.481-.238-.157-.488-.302-.681-.346a.574.574 0 0 0-.128-.015zm.252.208c.025 0 .053.003.083.01.118.026.272.115.418.211.145.096.283.2.333.289.05.089.014.163-.048.216a.255.255 0 0 1-.247.053c-.1-.031-.216-.126-.36-.219-.145-.093-.319-.184-.387-.268-.068-.084-.031-.162.029-.218a.26.26 0 0 1 .18-.074zm4.778 3.728c.211-.008.42.06.602.24.183.178.34.467.383.732.042.265-.03.505-.125.692a1.58 1.58 0 0 1-.289.397c-.074.074-.109.095-.14.095h-.003c-.033-.001-.062-.023-.208-.171a7.39 7.39 0 0 1-.573-.642c-.165-.22-.232-.383-.263-.568-.032-.185-.027-.39.082-.536.109-.146.323-.23.534-.239zm.093 1.111a.258.258 0 0 0-.153.046c-.058.041-.105.113-.093.185.012.073.085.146.174.255.089.11.195.255.264.335.068.08.1.093.127.091.029-.002.054-.018.086-.048a.349.349 0 0 0 .094-.157.518.518 0 0 0 .002-.316.668.668 0 0 0-.218-.282.476.476 0 0 0-.283-.109z"/></svg>Rhino</span></div>
+<div class="paybar"><span class="pl">Medios de pago <i>›</i></span>
+<img src="i30.png" alt="PSE"><img src="i31.png" alt="PayPal"><img src="i32.png" alt="Davivienda"><img src="i33.png" alt="Bancolombia"></div>
+<p class="pn">Te enviamos los datos de pago por WhatsApp junto con la cotización.</p>
+</div></section>
+<footer><div style="display:inline-block;background:#fff;border-radius:10px;padding:8px 14px;margin-bottom:12px"><img src="i01.png" alt="Alinco Ingeniería" style="height:34px;width:auto;display:block"></div><br>© Alinco Ingeniería · Proyectos BIM e ingeniería mecánica</footer>
+<script>
+(function(){
+ var home=document.getElementById('v-home'),ob=document.getElementById('v-obras');
+ function route(){
+  var h=location.hash.slice(1);
+  var isOb=(h==='obras'||h==='contacto-obras');
+  ob.hidden=!isOb;home.hidden=isOb;
+  if(isOb&&h==='contacto-obras'){var e=document.getElementById(h);if(e)e.scrollIntoView();}
+  else if(isOb||!h){window.scrollTo(0,0);}
+  else{var t=document.getElementById(h);if(t)t.scrollIntoView();}
+ }
+ window.addEventListener('hashchange',route);route();
+})();
+</script>
+<script>
+(function(){var lb=document.getElementById('lb'),li=document.getElementById('lbi');
+document.querySelectorAll('.pf').forEach(function(f){function o(){li.src=(f.querySelector('img.on')||f.querySelector('img')).src;lb.hidden=false}f.addEventListener('click',o);f.addEventListener('keydown',function(e){if(e.key==='Enter')o()})});
+document.querySelectorAll('.pf.sw').forEach(function(f,k){var im=f.querySelectorAll('img'),i=0;setInterval(function(){im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on')},4200+k*600)});lb.addEventListener('click',function(){lb.hidden=true});document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});})();
+(function(){var h=document.getElementById("heroSlides");if(!h)return;var alts=["PTAR Humax, equipos y tanques","Torre Ámbar, fachada de día","Casa La Playa, atardecer","Torre La Ceja, fachada","Escalera metálica de terraza, vista isométrica","Pérgola y deck de jardín, vista de día","PTAR Humax, vista isométrica con terreno"];var ims=[];alts.forEach(function(a){var o=document.querySelector('.pf img[alt="'+a+'"]');if(o){var i=document.createElement("img");i.src=o.src;i.alt="";h.appendChild(i);ims.push(i)}});if(!ims.length)return;var k=0;ims[0].classList.add("on");setInterval(function(){ims[k].classList.remove("on");k=(k+1)%ims.length;ims[k].classList.add("on")},5000)})();</script>
+</body>
+</html>
