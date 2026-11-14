@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://auestacivil.github.io/alinco-ingenieria/sitemap.xml
